@@ -242,12 +242,10 @@ p:last-child{margin-bottom:0}
 .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden;isolation:isolate}
 .hero__media{position:absolute;inset:0;z-index:-2}
 .hero__media video,.hero__media img{width:100%;height:100%;object-fit:cover}
-.hero::before{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:
-    radial-gradient(1100px 620px at 12% 18%,rgba(254,126,58,.24),transparent 62%),
-    linear-gradient(100deg,rgba(10,10,12,.94) 0%,rgba(10,10,12,.86) 42%,rgba(10,10,12,.62) 72%,rgba(10,10,12,.72) 100%);
-}
+/* no overlay on the video: legibility comes from text shadows instead,
+   so the footage plays at full contrast */
+.hero__copy{text-shadow:0 2px 16px rgba(0,0,0,.6),0 1px 4px rgba(0,0,0,.45)}
+.hero__copy .btn,.hero__copy .hero__badge{text-shadow:none}
 .hero__inner{
   display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
   gap:clamp(32px,4vw,72px);align-items:start;
@@ -255,7 +253,7 @@ p:last-child{margin-bottom:0}
 }
 .hero__badge{
   display:inline-flex;align-items:center;gap:12px;padding:9px 18px 9px 10px;border-radius:999px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);
+  background:rgba(12,12,14,.55);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);
   font-size:.82rem;color:#fff;margin-bottom:26px
 }
 .hero__badge b{font-family:var(--font-head);letter-spacing:.02em}
@@ -265,10 +263,10 @@ p:last-child{margin-bottom:0}
 .hero__badge b{white-space:nowrap}
 .hero h1{margin-bottom:22px}
 .hero h1 em{font-style:normal;color:var(--primary);display:inline-block}
-.hero__text{max-width:62ch;color:rgba(255,255,255,.8);font-size:clamp(1.02rem,1.15vw,1.2rem)}
+.hero__text{max-width:62ch;color:rgba(255,255,255,.95);font-size:clamp(1.02rem,1.15vw,1.2rem)}
 .hero__ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
-.hero__usps{display:flex;flex-wrap:wrap;gap:14px 30px;margin-top:38px;padding-top:30px;border-top:1px solid rgba(255,255,255,.14);list-style:none;padding-left:0}
-.hero__usps li{display:flex;align-items:center;gap:10px;font-size:.94rem;color:rgba(255,255,255,.82)}
+.hero__usps{display:flex;flex-wrap:wrap;gap:14px 30px;margin-top:38px;padding-top:30px;border-top:1px solid rgba(255,255,255,.3);list-style:none;padding-left:0}
+.hero__usps li{display:flex;align-items:center;gap:10px;font-size:.94rem;color:#fff}
 .hero__usps svg{width:19px;height:19px;color:var(--primary);flex:none}
 
 /* hero form card */
@@ -446,6 +444,8 @@ p:last-child{margin-bottom:0}
   display:grid;place-items:center;min-height:clamp(104px,9vw,150px);
   transition:transform .5s var(--ease)
 }
+/* first mark sits flush with the container edge, like the copy above it */
+.builders__grid .builder:first-child{justify-items:start}
 .builder img{max-height:clamp(80px,7.6vw,118px);width:auto;object-fit:contain;transition:transform .5s var(--ease)}
 .builder:hover{transform:translateY(-6px)}
 .builder:hover img{transform:scale(1.04)}
