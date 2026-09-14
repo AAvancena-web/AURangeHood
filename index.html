@@ -72,15 +72,16 @@ p:last-child{margin-bottom:0}
 
 /* ---------- Eyebrow / headings ---------- */
 .eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
+  display:inline-block;
   font-family:var(--font-head);font-size:.75rem;font-weight:700;
   letter-spacing:.22em;text-transform:uppercase;color:var(--primary);
   margin-bottom:18px;
 }
-.eyebrow::before{content:"";width:34px;height:2px;background:var(--primary);display:block}
-.center .eyebrow{justify-content:center}
 .lead{font-size:clamp(1.02rem,1.15vw,1.18rem);color:var(--muted)}
-.on-dark .lead,.on-dark p{color:var(--muted-light)}
+.on-dark .lead{color:#fff}
+.on-dark p{color:var(--muted-light)}
+/* leads on the dark sections need light text, not the light-theme muted grey */
+.services .lead,.contact .lead,.gallery .lead{color:#fff}
 .on-dark{color:#fff}
 .rule{height:1px;background:var(--line);border:0;margin:0}
 
@@ -116,7 +117,15 @@ p:last-child{margin-bottom:0}
   display:inline-flex;align-items:center;gap:10px;font-family:var(--font-head);font-weight:700;
   font-size:.8rem;letter-spacing:.13em;text-transform:uppercase;color:var(--primary);
 }
-.link-arrow span{display:block;width:26px;height:1.5px;background:var(--primary);transition:width .4s var(--ease)}
+.link-arrow span{
+  position:relative;display:block;width:28px;height:1.5px;background:currentColor;
+  transition:width .4s var(--ease)
+}
+.link-arrow span::after{
+  content:"";position:absolute;right:0;top:50%;width:7px;height:7px;
+  border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;
+  transform:translateY(-50%) rotate(45deg)
+}
 .link-arrow:hover span{width:44px}
 
 /* ============================================================
@@ -142,7 +151,15 @@ p:last-child{margin-bottom:0}
 .site-header__inner{display:flex;align-items:center;gap:clamp(18px,2.4vw,44px);padding-block:16px;transition:padding .4s var(--ease)}
 .site-header.is-stuck{box-shadow:0 10px 34px -20px rgba(12,12,14,.4)}
 .site-header.is-stuck .site-header__inner{padding-block:9px}
-.brand img{width:clamp(104px,9vw,138px);height:auto;max-height:62px;object-fit:contain}
+.brand{
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+  background:var(--ink);border-radius:16px;padding:11px 20px;
+  transition:background-color .35s var(--ease),transform .45s var(--ease);
+}
+.brand:hover{background:var(--ink-3);transform:translateY(-2px)}
+.brand img{width:clamp(96px,7.6vw,124px);height:auto;max-height:58px;object-fit:contain}
+.drawer .brand{padding:9px 16px;border-radius:13px}
+.drawer .brand img{width:96px}
 .nav{margin-inline:auto;display:flex;align-items:center;gap:clamp(14px,1.9vw,34px)}
 .nav a{
   font-family:var(--font-head);font-weight:600;font-size:.92rem;letter-spacing:.01em;
@@ -244,33 +261,33 @@ p:last-child{margin-bottom:0}
 
 /* hero form card */
 .form-card{
-  background:#fff;color:var(--color-text);border-radius:var(--radius-lg);padding:clamp(24px,2.2vw,38px);
+  background:#fff;color:var(--color-text);border-radius:var(--radius-lg);padding:clamp(24px,2vw,34px);
   box-shadow:var(--shadow-lg);position:relative;overflow:hidden
 }
 .form-card::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--primary),#ffb98d)}
-.form-card__head{margin-bottom:20px}
+.form-card__head{margin-bottom:18px}
 .form-card__head h3{margin-bottom:6px}
 .form-card__head p{font-size:.92rem;color:var(--muted)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;align-items:end}
 .field{position:relative;display:block}
 .field--full{grid-column:1/-1}
 .field label{
-  position:absolute;left:17px;top:15px;font-size:.95rem;color:#8A8C93;pointer-events:none;
+  position:absolute;left:16px;top:14px;font-size:.95rem;color:#8A8C93;pointer-events:none;
   transition:transform .25s var(--ease),font-size .25s var(--ease),color .25s;transform-origin:left top;background:#fff;padding-inline:4px
 }
 .field input,.field select,.field textarea{
   width:100%;font-family:var(--font-body);font-size:.98rem;color:var(--color-text);
-  padding:16px 17px;border:1.5px solid rgba(12,12,14,.14);border-radius:13px;background:#fff;
+  padding:14px 16px;border:1.5px solid rgba(12,12,14,.14);border-radius:12px;background:#fff;
   transition:border-color .3s,box-shadow .3s;appearance:none
 }
-.field textarea{min-height:104px;resize:vertical}
+.field textarea{min-height:92px;resize:vertical}
 .field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235A5C63' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:17px;padding-right:44px}
 .field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-soft)}
 .field input:focus + label,.field input:not(:placeholder-shown) + label,
 .field textarea:focus + label,.field textarea:not(:placeholder-shown) + label{
-  transform:translateY(-25px) scale(.78);color:var(--primary)
+  transform:translateY(-23px) scale(.78);color:var(--primary)
 }
-.field--select label{position:static;display:block;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-family:var(--font-head);font-weight:700;background:none;padding:0}
+.field--select label{position:static;display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-family:var(--font-head);font-weight:700;background:none;padding:0}
 .form-foot{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:.8rem;color:var(--muted)}
 .form-foot svg{width:16px;height:16px;color:var(--primary);flex:none}
 .form-note{margin-top:14px;font-size:.84rem;padding:13px 16px;border-radius:12px;background:var(--e-global-color-accent);color:#7A3A14;display:none}
@@ -281,18 +298,27 @@ p:last-child{margin-bottom:0}
    ============================================================ */
 .brands{background:var(--e-global-color-accent);position:relative;overflow:hidden}
 .brands__head{max-width:none}
-.marquee{margin-top:44px;position:relative;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.marquee__track{display:flex;gap:22px;width:max-content;animation:slide 34s linear infinite}
+.marquee{
+  margin-top:clamp(34px,3.4vw,52px);position:relative;overflow:hidden;
+  background:var(--e-global-color-accent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)
+}
+.marquee__track{display:flex;align-items:center;gap:clamp(26px,3.4vw,64px);width:max-content;animation:slide 38s linear infinite}
 .marquee:hover .marquee__track{animation-play-state:paused}
 @keyframes slide{to{transform:translateX(-50%)}}
 .brand-card{
-  width:clamp(180px,15vw,238px);aspect-ratio:1.5/1;background:#fff;border-radius:var(--radius);
-  display:grid;place-items:center;padding:22px;box-shadow:var(--shadow-sm);
-  transition:transform .45s var(--ease),box-shadow .45s var(--ease);flex:none
+  display:grid;place-items:center;flex:none;
+  transition:transform .5s var(--ease)
 }
-.brand-card img{max-height:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.72;transition:filter .4s,opacity .4s,transform .5s var(--ease)}
-.brand-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
-.brand-card:hover img{filter:none;opacity:1;transform:scale(1.05)}
+/* Source logos are square JPGs with a baked in white background, so multiply
+   drops that white into the accent tone and leaves only the mark. */
+.brand-card img{
+  height:clamp(148px,13.5vw,210px);width:auto;max-width:none;object-fit:contain;
+  mix-blend-mode:multiply;transition:transform .55s var(--ease)
+}
+.brand-card:hover{transform:translateY(-6px)}
+.brand-card:hover img{transform:scale(1.07)}
 .brands__foot{margin-top:44px;display:flex;flex-direction:column;align-items:center;gap:12px}
 .brands__foot small{color:var(--muted);font-size:.9rem}
 
@@ -438,30 +464,8 @@ p:last-child{margin-bottom:0}
    TESTIMONIALS
    ============================================================ */
 .reviews{background:var(--secondary)}
-.rating-bar{
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(16px,3vw,48px);
-  padding:26px clamp(20px,2.4vw,38px);border-radius:var(--radius-lg);background:var(--e-global-color-accent);margin-top:36px
-}
-.rating-bar__score{display:flex;align-items:center;gap:16px}
-.rating-bar__score strong{font-family:var(--font-head);font-size:3rem;line-height:1}
 .stars{display:inline-flex;gap:3px;color:#FFA000}
 .stars svg{width:18px;height:18px}
-.rating-bar small{display:block;color:var(--muted);font-size:.86rem;margin-top:4px}
-.rating-bar__divider{width:1px;height:46px;background:rgba(12,12,14,.14)}
-.rating-bar__tag{font-family:var(--font-head);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.82rem;color:var(--primary)}
-
-.reviews__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,26px);margin-top:clamp(30px,3vw,44px)}
-.review{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(24px,2vw,32px);
-  display:flex;flex-direction:column;gap:16px;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s
-}
-.review:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:rgba(254,126,58,.4)}
-.review__quote{font-size:2.6rem;line-height:.6;color:var(--primary);font-family:var(--font-head);height:20px}
-.review p{font-size:.98rem;color:#3B3D43;margin:0}
-.review__foot{display:flex;align-items:center;gap:13px;margin-top:auto;padding-top:8px}
-.avatar{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--font-head);font-weight:700;flex:none}
-.review__name{display:block;font-family:var(--font-head);font-weight:700;font-size:.98rem}
-.review__meta{display:block;font-size:.8rem;color:var(--muted)}
 
 /* ============================================================
    CTA BAND
@@ -596,7 +600,6 @@ p:last-child{margin-bottom:0}
   .header__actions{display:none}
   .mobile-tools{display:flex}
   .svc-grid,.steps,.builders__grid,.stats{grid-template-columns:repeat(2,1fr)}
-  .reviews__grid{grid-template-columns:1fr 1fr}
   .gallery__grid{grid-template-columns:repeat(3,1fr)}
   .footer__grid{grid-template-columns:1fr 1fr}
 }
@@ -612,7 +615,7 @@ p:last-child{margin-bottom:0}
   body{font-size:16px}
   .call-float{display:inline-flex}
   .to-top{display:none}
-  .svc-grid,.steps,.reviews__grid,.builders__grid{grid-template-columns:1fr}
+  .svc-grid,.steps,.builders__grid{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
   .gallery__grid{grid-template-columns:1fr 1fr}
   .shot:nth-child(1),.shot:nth-child(6){grid-column:span 2;grid-row:auto;aspect-ratio:4/3}
@@ -620,7 +623,6 @@ p:last-child{margin-bottom:0}
   .step::after{display:none}
   .topbar__left .topbar__item--mail span{display:none}
   .footer__grid{grid-template-columns:1fr}
-  .rating-bar__divider{display:none}
   .hero__ctas .btn{width:100%}
   .site-footer{padding-bottom:86px}
   .media-badge{left:14px;bottom:14px;padding:16px 18px;min-width:0}
@@ -715,7 +717,7 @@ p:last-child{margin-bottom:0}
 <div class="scrim" id="scrim" hidden></div>
 <aside class="drawer" id="drawer" aria-label="Mobile menu" aria-hidden="true">
   <div class="drawer__top">
-    <img src="https://australianrangehoods.com.au/wp-content/uploads/2024/12/site-logo.png" alt="Australian Rangehoods" style="width:110px">
+    <span class="brand"><img src="https://australianrangehoods.com.au/wp-content/uploads/2024/12/site-logo.png" alt="Australian Rangehoods"></span>
     <button class="burger is-open" id="drawerClose" aria-label="Close menu"><span></span><span></span><span></span></button>
   </div>
   <a class="drawer__link" href="/">Home</a>
@@ -760,7 +762,7 @@ p:last-child{margin-bottom:0}
         <b>179 Google reviews</b>
       </span>
 
-      <h1 data-reveal>Melbourne's go-to specialists for <em>rangehood installation</em></h1>
+      <h1 data-reveal>Melbourne's go-to service provider for <em>Rangehood installation</em></h1>
 
       <p class="hero__text" data-reveal>
         Licensed installers of Qasair, Sirius and Whispair. From custom canopies and alfresco hoods to full ducting
@@ -799,10 +801,10 @@ p:last-child{margin-bottom:0}
         <div class="form-grid">
           <p class="field"><input type="text" id="h-first" name="first_name" placeholder=" " required><label for="h-first">First name</label></p>
           <p class="field"><input type="text" id="h-last" name="last_name" placeholder=" " required><label for="h-last">Last name</label></p>
-          <p class="field field--full"><input type="tel" id="h-phone" name="phone" placeholder=" " required><label for="h-phone">Phone number</label></p>
-          <p class="field field--full"><input type="email" id="h-email" name="email" placeholder=" " required><label for="h-email">Email address</label></p>
-          <p class="field field--full"><input type="text" id="h-suburb" name="suburb" placeholder=" " required><label for="h-suburb">Suburb</label></p>
-          <p class="field field--select field--full">
+          <p class="field"><input type="tel" id="h-phone" name="phone" placeholder=" " required><label for="h-phone">Phone number</label></p>
+          <p class="field"><input type="email" id="h-email" name="email" placeholder=" " required><label for="h-email">Email address</label></p>
+          <p class="field"><input type="text" id="h-suburb" name="suburb" placeholder=" " required><label for="h-suburb">Suburb</label></p>
+          <p class="field field--select">
             <label for="h-service">Service required</label>
             <select id="h-service" name="service" required>
               <option value="">Please select a service</option>
@@ -879,7 +881,7 @@ p:last-child{margin-bottom:0}
       <div data-reveal="right">
         <span class="eyebrow">Welcome to Australian Rangehoods</span>
         <h2>Expert ventilation solutions, engineered for your kitchen</h2>
-        <p class="lead">
+        <p>
           We specialise in high performance rangehood solutions tailored to modern kitchens and outdoor entertaining
           spaces. Whether you are renovating, building new or upgrading an alfresco area, our installations combine
           style, airflow and durability so your space stays clean, comfortable and efficient.
@@ -1150,76 +1152,9 @@ p:last-child{margin-bottom:0}
       <p class="lead">Our team makes sure every job is done right the first time. That is why homeowners love working with Australian Rangehoods.</p>
     </div>
 
-    <div class="rating-bar" data-reveal>
-      <div class="rating-bar__score">
-        <strong>5.0</strong>
-        <div>
-          <span class="stars" aria-label="5 out of 5 stars">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
-          </span>
-          <small>Based on 179 Google reviews</small>
-        </div>
-      </div>
-      <span class="rating-bar__divider" aria-hidden="true"></span>
-      <span class="rating-bar__tag">Excellent</span>
-      <span class="rating-bar__divider" aria-hidden="true"></span>
-      <a class="link-arrow" href="https://www.facebook.com/australianrangehoods" target="_blank" rel="noopener">Read our reviews <span></span></a>
-    </div>
-
-    <div class="reviews__grid">
-      <article class="review" data-reveal>
-        <div class="review__quote">&ldquo;</div>
-        <p>Clive was great to deal with and his workmanship is top notch. Could not be happier with the install he performed. Highly recommend.</p>
-        <div class="review__foot">
-          <span class="avatar">BE</span>
-          <span><span class="review__name">Ben Elliott</span><span class="review__meta">Google review</span></span>
-        </div>
-      </article>
-      <article class="review" data-reveal>
-        <div class="review__quote">&ldquo;</div>
-        <p>Clive did a great job installing our replacement sliding rangehood and venting it out an external wall. It required some creative cabinet modifications and he was efficient and made sure the space was tidy afterwards.</p>
-        <div class="review__foot">
-          <span class="avatar">TL</span>
-          <span><span class="review__name">Tessa L</span><span class="review__meta">Google review</span></span>
-        </div>
-      </article>
-      <article class="review" data-reveal>
-        <div class="review__quote">&ldquo;</div>
-        <p>The installer arrived on time, was professional and completed the installation efficiently with great attention to detail. Everything was fitted neatly, tested thoroughly and left clean and tidy afterwards.</p>
-        <div class="review__foot">
-          <span class="avatar">TH</span>
-          <span><span class="review__name">Tayebeh Hashemi</span><span class="review__meta">Google review</span></span>
-        </div>
-      </article>
-      <article class="review" data-reveal>
-        <div class="review__quote">&ldquo;</div>
-        <p>We are very happy with the way Clive assisted us to restore a bespoke rangehood built about 35 years ago. The job was tricky as sizes were not standard. He worked creatively and patiently to address the issues.</p>
-        <div class="review__foot">
-          <span class="avatar">IK</span>
-          <span><span class="review__name">Ilana Katz</span><span class="review__meta">Google review</span></span>
-        </div>
-      </article>
-      <article class="review" data-reveal>
-        <div class="review__quote">&ldquo;</div>
-        <p>Clive quoted competitively and communicated well. It turned out we needed custom ducting due to the structure of our roof and he sorted everything out. The installation was excellent and he tidied up afterwards.</p>
-        <div class="review__foot">
-          <span class="avatar">LM</span>
-          <span><span class="review__name">Luke Manning</span><span class="review__meta">Google review</span></span>
-        </div>
-      </article>
-      <article class="review" data-reveal>
-        <div class="review__quote">&ldquo;</div>
-        <p>Professional, knowledgeable and thorough from start to finish. Clive explained every step and made sure everything was fitted perfectly, leaving our kitchen and BBQ area looking and functioning better than ever.</p>
-        <div class="review__foot">
-          <span class="avatar">JD</span>
-          <span><span class="review__name">Julian Dart</span><span class="review__meta">Builder, Hastings project</span></span>
-        </div>
-      </article>
-    </div>
+    <!-- Trustindex Google reviews shortcode goes here, for example:
+         [trustindex no-registration=google]
+         The widget renders the live rating, review count and testimonials. -->
   </div>
 </section>
 
