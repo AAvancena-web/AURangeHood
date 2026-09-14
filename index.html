@@ -280,13 +280,19 @@ p:last-child{margin-bottom:0}
 .form-card__head{margin-bottom:18px}
 .form-card__head h3{margin-bottom:6px}
 .form-card__head p{font-size:.92rem;color:var(--muted)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;align-items:end}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
 .field{position:relative;display:block}
 .field--full{grid-column:1/-1}
 .field label{
-  position:absolute;left:16px;top:14px;font-size:.95rem;color:#8A8C93;pointer-events:none;
-  transition:transform .25s var(--ease),font-size .25s var(--ease),color .25s;transform-origin:left top;background:#fff;padding-inline:4px
+  display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;font-family:var(--font-head);font-weight:700;
+  transition:color .25s
 }
+/* mark the required fields without touching every label */
+.field:has(input[required]) label::after,
+.field:has(select[required]) label::after,
+.field:has(textarea[required]) label::after{content:" *";color:var(--primary)}
+.field:focus-within label{color:var(--primary)}
 .field input,.field select,.field textarea{
   width:100%;font-family:var(--font-body);font-size:.98rem;color:var(--color-text);
   padding:14px 16px;border:1.5px solid rgba(12,12,14,.14);border-radius:12px;background:#fff;
@@ -295,11 +301,7 @@ p:last-child{margin-bottom:0}
 .field textarea{min-height:92px;resize:vertical}
 .field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235A5C63' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:17px;padding-right:44px}
 .field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-soft)}
-.field input:focus + label,.field input:not(:placeholder-shown) + label,
-.field textarea:focus + label,.field textarea:not(:placeholder-shown) + label{
-  transform:translateY(-23px) scale(.78);color:var(--primary)
-}
-.field--select label{position:static;display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-family:var(--font-head);font-weight:700;background:none;padding:0}
+
 .form-foot{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:.8rem;color:var(--muted)}
 .form-foot svg{width:16px;height:16px;color:var(--primary);flex:none}
 .form-note{margin-top:14px;font-size:.84rem;padding:13px 16px;border-radius:12px;background:var(--e-global-color-accent);color:#7A3A14;display:none}
@@ -823,11 +825,11 @@ p:last-child{margin-bottom:0}
       </div>
       <form class="js-form" novalidate>
         <div class="form-grid">
-          <p class="field"><input type="text" id="h-first" name="first_name" placeholder=" " required><label for="h-first">First name</label></p>
-          <p class="field"><input type="text" id="h-last" name="last_name" placeholder=" " required><label for="h-last">Last name</label></p>
-          <p class="field"><input type="tel" id="h-phone" name="phone" placeholder=" " required><label for="h-phone">Phone number</label></p>
-          <p class="field"><input type="email" id="h-email" name="email" placeholder=" " required><label for="h-email">Email address</label></p>
-          <p class="field"><input type="text" id="h-suburb" name="suburb" placeholder=" " required><label for="h-suburb">Suburb</label></p>
+          <p class="field"><label for="h-first">First name</label><input type="text" id="h-first" name="first_name" required></p>
+          <p class="field"><label for="h-last">Last name</label><input type="text" id="h-last" name="last_name" required></p>
+          <p class="field"><label for="h-phone">Phone number</label><input type="tel" id="h-phone" name="phone" required></p>
+          <p class="field"><label for="h-email">Email address</label><input type="email" id="h-email" name="email" required></p>
+          <p class="field"><label for="h-suburb">Suburb</label><input type="text" id="h-suburb" name="suburb" required></p>
           <p class="field field--select">
             <label for="h-service">Service required</label>
             <select id="h-service" name="service" required>
@@ -838,7 +840,7 @@ p:last-child{margin-bottom:0}
               <option>Maintenance &amp; Repairs</option>
             </select>
           </p>
-          <p class="field field--full"><textarea id="h-message" name="message" placeholder=" "></textarea><label for="h-message">Tell us about your project</label></p>
+          <p class="field field--full"><label for="h-message">Tell us about your project</label><textarea id="h-message" name="message"></textarea></p>
         </div>
         <button class="btn btn--block" type="submit" style="margin-top:16px">
           Send My Enquiry
@@ -1360,10 +1362,10 @@ p:last-child{margin-bottom:0}
         </div>
         <form class="js-form" novalidate>
           <div class="form-grid">
-            <p class="field field--full"><input type="text" id="c-name" name="name" placeholder=" " required><label for="c-name">Name</label></p>
-            <p class="field"><input type="email" id="c-email" name="email" placeholder=" " required><label for="c-email">Email address</label></p>
-            <p class="field"><input type="tel" id="c-phone" name="phone" placeholder=" " required><label for="c-phone">Phone number</label></p>
-            <p class="field"><input type="text" id="c-suburb" name="suburb" placeholder=" " required><label for="c-suburb">Suburb</label></p>
+            <p class="field field--full"><label for="c-name">Name</label><input type="text" id="c-name" name="name" required></p>
+            <p class="field"><label for="c-email">Email address</label><input type="email" id="c-email" name="email" required></p>
+            <p class="field"><label for="c-phone">Phone number</label><input type="tel" id="c-phone" name="phone" required></p>
+            <p class="field"><label for="c-suburb">Suburb</label><input type="text" id="c-suburb" name="suburb" required></p>
             <p class="field field--select">
               <label for="c-service">Service</label>
               <select id="c-service" name="service" required>
@@ -1385,7 +1387,7 @@ p:last-child{margin-bottom:0}
                 <option>Other</option>
               </select>
             </p>
-            <p class="field field--full"><textarea id="c-message" name="message" placeholder=" " required></textarea><label for="c-message">Message</label></p>
+            <p class="field field--full"><label for="c-message">Message</label><textarea id="c-message" name="message" required></textarea></p>
           </div>
           <button class="btn btn--block" type="submit" style="margin-top:16px">
             Submit Enquiry
