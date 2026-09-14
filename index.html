@@ -107,8 +107,9 @@ p:last-child{margin-bottom:0}
 .btn--light{--btn-bg:#fff;--btn-fg:var(--ink);box-shadow:0 14px 30px -16px rgba(0,0,0,.65)}
 .btn--light:hover{--btn-bg:var(--e-global-color-accent);--btn-fg:var(--ink);box-shadow:0 22px 42px -18px rgba(0,0,0,.75)}
 .btn--dark{--btn-bg:var(--ink);--btn-fg:#fff;box-shadow:0 14px 30px -16px rgba(12,12,14,.6)}
-/* same black fill on dark sections, with a hairline so the shape still reads */
-.hero .btn--dark,.services .btn--dark,.cta-band .btn--dark,.gallery .btn--dark{border-color:rgba(255,255,255,.32)}
+/* secondary goes white on the dark sections so it stays legible; the banner
+   keeps a black call button, so give that one a hairline */
+.hero .btn--dark{border-color:rgba(255,255,255,.32)}
 .btn--dark:hover{--btn-bg:var(--primary)}
 .btn--outline{--btn-bg:transparent;--btn-fg:var(--ink);border-color:rgba(12,12,14,.22);box-shadow:none}
 .btn--outline:hover{--btn-bg:var(--ink);--btn-fg:#fff;border-color:var(--ink)}
@@ -833,7 +834,7 @@ p:last-child{margin-bottom:0}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
           Call Us Today
         </a>
-        <a class="btn btn--dark" href="/shop/">
+        <a class="btn btn--light" href="/shop/">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2.2l2.4 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.55L21 7H6"/></svg>
           Shop Our Rangehood Products
         </a>
@@ -1058,7 +1059,7 @@ p:last-child{margin-bottom:0}
     <div class="section-cta" data-reveal>
       <p>Not sure which option suits your kitchen? We will talk it through with you.</p>
       <a class="btn btn--glow" href="#contact">Get a Free Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></a>
-      <a class="btn btn--dark" href="tel:1800726434"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call 1800 726 434</a>
+      <a class="btn btn--light" href="tel:1800726434"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call 1800 726 434</a>
     </div>
   </div>
 </section>
@@ -1278,7 +1279,7 @@ p:last-child{margin-bottom:0}
         Get a Free Quote
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
-      <a class="btn btn--dark" href="tel:1800726434">
+      <a class="btn btn--light" href="tel:1800726434">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
         Call 1800 726 434
       </a>
