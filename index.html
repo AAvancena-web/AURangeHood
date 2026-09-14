@@ -567,12 +567,13 @@ p:last-child{margin-bottom:0}
 
 /* back to top */
 .to-top{
-  position:fixed;right:20px;bottom:24px;width:48px;height:48px;border-radius:50%;background:var(--ink);color:#fff;
+  position:fixed;right:20px;bottom:24px;width:48px;height:48px;border-radius:50%;background:var(--primary);color:#fff;
   border:0;cursor:pointer;display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;
-  transform:translateY(14px);transition:opacity .4s,transform .4s var(--ease),background-color .3s
+  box-shadow:0 12px 26px -12px rgba(254,126,58,.85);
+  transform:translateY(14px);transition:opacity .4s,transform .4s var(--ease),background-color .3s,box-shadow .3s
 }
 .to-top.is-visible{opacity:1;pointer-events:auto;transform:none}
-.to-top:hover{background:var(--primary)}
+.to-top:hover{background:var(--primary-dark);box-shadow:0 16px 32px -12px rgba(254,126,58,.95)}
 .to-top svg{width:19px;height:19px}
 
 /* ============================================================
