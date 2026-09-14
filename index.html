@@ -577,10 +577,12 @@ p:last-child{margin-bottom:0}
 .contact-info span.k{display:block;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-family:var(--font-head);font-weight:700;margin-bottom:3px}
 .contact-info span.v{display:block;font-family:var(--font-head);font-weight:600;font-size:1.02rem;color:var(--ink);line-height:1.45}
 .socials-row{display:flex;gap:12px;margin-top:26px}
-.socials-row a{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;transition:background-color .35s,border-color .35s,color .35s,transform .4s var(--ease)}
-.contact .socials-row a{border-color:rgba(12,12,14,.16);background:#fff;color:var(--ink)}
-.contact .socials-row a:hover{background:var(--primary);border-color:var(--primary);color:#fff}
-.socials-row a:hover{background:var(--primary);border-color:var(--primary);transform:translateY(-4px)}
+.socials-row a{
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:var(--primary);border:1px solid var(--primary);color:#fff;
+  transition:background-color .35s,border-color .35s,transform .4s var(--ease)
+}
+.socials-row a:hover{background:var(--primary-dark);border-color:var(--primary-dark);color:#fff;transform:translateY(-4px)}
 .socials-row svg{width:18px;height:18px}
 .contact .form-card{color:var(--color-text)}
 .map{margin-top:clamp(34px,3.4vw,54px);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(12,12,14,.08);position:relative}
