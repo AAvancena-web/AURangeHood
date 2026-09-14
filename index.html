@@ -116,6 +116,19 @@ p:last-child{margin-bottom:0}
 .btn--block{width:100%}
 .btn--sm{padding:14px 26px;font-size:.76rem}
 
+.shortcode-slot{
+  margin-top:clamp(26px,3vw,42px);padding:clamp(28px,3.4vw,52px) clamp(20px,2.4vw,38px);
+  border:2px dashed rgba(12,12,14,.2);border-radius:var(--radius-lg);
+  display:grid;justify-items:center;gap:7px;text-align:center;background:rgba(255,255,255,.55)
+}
+.shortcode-slot svg{width:30px;height:30px;color:var(--primary);margin-bottom:4px}
+.shortcode-slot b{font-family:var(--font-head);font-size:1.06rem}
+.shortcode-slot span{color:var(--muted);font-size:.96rem}
+.shortcode-slot code{
+  margin-top:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86rem;
+  background:var(--e-global-color-accent);color:#8A4318;padding:9px 16px;border-radius:999px
+}
+
 .section-cta{margin-top:clamp(34px,3.6vw,58px);display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
 .section-cta p{width:100%;text-align:center;margin:0 0 6px;color:var(--muted);font-size:1rem}
 .services .section-cta p{color:rgba(255,255,255,.82)}
@@ -412,7 +425,20 @@ p:last-child{margin-bottom:0}
 .svc__body{padding:26px clamp(20px,1.7vw,28px) 30px;display:flex;flex-direction:column;flex:1;gap:12px}
 .svc__body h3{margin:0;font-size:1.22rem}
 .svc__body p{color:rgba(255,255,255,.7);font-size:.96rem;margin:0}
-.svc__body .section-cta{margin-top:clamp(34px,3.6vw,58px);display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
+.svc__body .shortcode-slot{
+  margin-top:clamp(26px,3vw,42px);padding:clamp(28px,3.4vw,52px) clamp(20px,2.4vw,38px);
+  border:2px dashed rgba(12,12,14,.2);border-radius:var(--radius-lg);
+  display:grid;justify-items:center;gap:7px;text-align:center;background:rgba(255,255,255,.55)
+}
+.shortcode-slot svg{width:30px;height:30px;color:var(--primary);margin-bottom:4px}
+.shortcode-slot b{font-family:var(--font-head);font-size:1.06rem}
+.shortcode-slot span{color:var(--muted);font-size:.96rem}
+.shortcode-slot code{
+  margin-top:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86rem;
+  background:var(--e-global-color-accent);color:#8A4318;padding:9px 16px;border-radius:999px
+}
+
+.section-cta{margin-top:clamp(34px,3.6vw,58px);display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
 .section-cta p{width:100%;text-align:center;margin:0 0 6px;color:var(--muted);font-size:1rem}
 .services .section-cta p{color:rgba(255,255,255,.82)}
 
@@ -903,6 +929,14 @@ p:last-child{margin-bottom:0}
          [trustindex no-registration=google]
          The widget renders the live rating, review count and testimonials. -->
 
+    <div class="shortcode-slot" data-reveal>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 14h8"/></svg>
+      <b>Google reviews widget</b>
+      <span>Reviews, star rating and review count render here from the Trustindex shortcode.</span>
+      <code>[trustindex no-registration=google]</code>
+    </div>
+
+
     <div class="section-cta" data-reveal>
       <p>Join the Melbourne homeowners who rated us 5.0 out of 5.</p>
       <a class="btn btn--glow" href="#contact">Get a Free Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></a>
@@ -1254,6 +1288,14 @@ p:last-child{margin-bottom:0}
     <!-- Custom Facebook Feed shortcode goes here, for example:
          [custom-facebook-feed feed=1]
          The plugin renders the live timeline, so no markup is needed above. -->
+
+    <div class="shortcode-slot" data-reveal>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 14h8"/></svg>
+      <b>Facebook feed widget</b>
+      <span>The live post timeline renders here from the Custom Facebook Feed shortcode.</span>
+      <code>[custom-facebook-feed feed=1]</code>
+    </div>
+
 
     <div class="social-feed__foot" data-reveal>
       <a class="btn btn--dark" href="https://www.facebook.com/australianrangehoods" target="_blank" rel="noopener">
