@@ -300,6 +300,7 @@ p:last-child{margin-bottom:0}
 }
 .field textarea{min-height:92px;resize:vertical}
 .field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235A5C63' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:17px;padding-right:44px}
+.field input::placeholder,.field textarea::placeholder{color:#A2A4AB;opacity:1}
 .field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-soft)}
 
 .form-foot{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:.8rem;color:var(--muted)}
@@ -825,11 +826,11 @@ p:last-child{margin-bottom:0}
       </div>
       <form class="js-form" novalidate>
         <div class="form-grid">
-          <p class="field"><label for="h-first">First name</label><input type="text" id="h-first" name="first_name" required></p>
-          <p class="field"><label for="h-last">Last name</label><input type="text" id="h-last" name="last_name" required></p>
-          <p class="field"><label for="h-phone">Phone number</label><input type="tel" id="h-phone" name="phone" required></p>
-          <p class="field"><label for="h-email">Email address</label><input type="email" id="h-email" name="email" required></p>
-          <p class="field"><label for="h-suburb">Suburb</label><input type="text" id="h-suburb" name="suburb" required></p>
+          <p class="field"><label for="h-first">First name</label><input type="text" id="h-first" name="first_name" required placeholder="John"></p>
+          <p class="field"><label for="h-last">Last name</label><input type="text" id="h-last" name="last_name" required placeholder="Smith"></p>
+          <p class="field"><label for="h-phone">Phone number</label><input type="tel" id="h-phone" name="phone" required placeholder="04XX XXX XXX"></p>
+          <p class="field"><label for="h-email">Email address</label><input type="email" id="h-email" name="email" required placeholder="you@example.com"></p>
+          <p class="field"><label for="h-suburb">Suburb</label><input type="text" id="h-suburb" name="suburb" required placeholder="e.g. Narre Warren South"></p>
           <p class="field field--select">
             <label for="h-service">Service required</label>
             <select id="h-service" name="service" required>
@@ -840,7 +841,7 @@ p:last-child{margin-bottom:0}
               <option>Maintenance &amp; Repairs</option>
             </select>
           </p>
-          <p class="field field--full"><label for="h-message">Tell us about your project</label><textarea id="h-message" name="message"></textarea></p>
+          <p class="field field--full"><label for="h-message">Tell us about your project</label><textarea id="h-message" name="message" placeholder="Cooktop size, kitchen layout, preferred timeline"></textarea></p>
         </div>
         <button class="btn btn--block" type="submit" style="margin-top:16px">
           Send My Enquiry
@@ -1362,10 +1363,10 @@ p:last-child{margin-bottom:0}
         </div>
         <form class="js-form" novalidate>
           <div class="form-grid">
-            <p class="field field--full"><label for="c-name">Name</label><input type="text" id="c-name" name="name" required></p>
-            <p class="field"><label for="c-email">Email address</label><input type="email" id="c-email" name="email" required></p>
-            <p class="field"><label for="c-phone">Phone number</label><input type="tel" id="c-phone" name="phone" required></p>
-            <p class="field"><label for="c-suburb">Suburb</label><input type="text" id="c-suburb" name="suburb" required></p>
+            <p class="field field--full"><label for="c-name">Name</label><input type="text" id="c-name" name="name" required placeholder="John Smith"></p>
+            <p class="field"><label for="c-email">Email address</label><input type="email" id="c-email" name="email" required placeholder="you@example.com"></p>
+            <p class="field"><label for="c-phone">Phone number</label><input type="tel" id="c-phone" name="phone" required placeholder="04XX XXX XXX"></p>
+            <p class="field"><label for="c-suburb">Suburb</label><input type="text" id="c-suburb" name="suburb" required placeholder="e.g. Narre Warren South"></p>
             <p class="field field--select">
               <label for="c-service">Service</label>
               <select id="c-service" name="service" required>
@@ -1387,7 +1388,7 @@ p:last-child{margin-bottom:0}
                 <option>Other</option>
               </select>
             </p>
-            <p class="field field--full"><label for="c-message">Message</label><textarea id="c-message" name="message" required></textarea></p>
+            <p class="field field--full"><label for="c-message">Message</label><textarea id="c-message" name="message" required placeholder="Tell us what you need and when you need it"></textarea></p>
           </div>
           <button class="btn btn--block" type="submit" style="margin-top:16px">
             Submit Enquiry
