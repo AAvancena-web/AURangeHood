@@ -136,3 +136,40 @@ function ar_acf_dependency_notice() {
 	);
 }
 add_action( 'admin_notices', 'ar_acf_dependency_notice' );
+
+/**
+ * Contact Form 7 adds paragraph and line break tags to the form output, which
+ * breaks the two column grid the design uses. Turn that off, but only for the
+ * form this design actually renders, so any other CF7 form on the site keeps
+ * its normal behaviour.
+ */
+function ar_cf7_disable_autop( $allow ) {
+	$shortcode = (string) ar_option( 'form_shortcode', '' );
+	if ( false === strpos( $shortcode, 'contact-form-7' ) ) {
+		return $allow;
+	}
+	if ( ! class_exists( 'WPCF7_ContactForm' ) ) {
+		return $allow;
+	}
+
+	$current = WPCF7_ContactForm::get_current();
+	if ( ! $current ) {
+		return $allow;
+	}
+
+	// CF7 shortcodes carry a numeric id on older versions and a hash on newer.
+	if ( ! preg_match( '/id=["\']?([A-Za-z0-9]+)["\']?/', $shortcode, $m ) ) {
+		return $allow;
+	}
+	$wanted = $m[1];
+
+	if ( (string) $current->id() === $wanted ) {
+		return false;
+	}
+	if ( method_exists( $current, 'hash' ) && 0 === strpos( (string) $current->hash(), $wanted ) ) {
+		return false;
+	}
+
+	return $allow;
+}
+add_filter( 'wpcf7_autop_or_not', 'ar_cf7_disable_autop' );

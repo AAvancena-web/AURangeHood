@@ -1,0 +1,38 @@
+Contact Form 7, Mail tab settings to match the form template.
+
+--------------------------------------------------------------------
+Subject
+--------------------------------------------------------------------
+New rangehood enquiry from [first-name] [last-name] ([suburb])
+
+--------------------------------------------------------------------
+From
+--------------------------------------------------------------------
+Australian Rangehoods <wordpress@australianrangehoods.com.au>
+
+Use a From address on your own domain. Sending as the visitor's address
+gets the mail rejected by SPF and DMARC.
+
+--------------------------------------------------------------------
+Additional headers
+--------------------------------------------------------------------
+Reply-To: [email]
+
+--------------------------------------------------------------------
+Message body
+--------------------------------------------------------------------
+New enquiry from the website.
+
+Name:     [first-name] [last-name]
+Phone:    [phone]
+Email:    [email]
+Suburb:   [suburb]
+Service:  [service]
+Heard via: [source]
+
+Message:
+[message]
+
+--
+Sent from [_site_title] ([_site_url])
+Page: [_post_title] [_post_url]

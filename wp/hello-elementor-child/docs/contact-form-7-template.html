@@ -1,0 +1,62 @@
+<!--
+  Australian Rangehoods enquiry form, for Contact Form 7.
+
+  HOW TO USE
+  1. Contact > Add New.
+  2. Title it "Rangehood Enquiry".
+  3. Replace everything in the Form tab with the block below.
+  4. Save, copy the shortcode CF7 gives you, and paste it into
+     AR Design > Enquiry form > Form shortcode.
+
+  The wrapper divs and the labels are supplied here because CF7 does not
+  generate them. They are what the grid and the stacked label styling hook
+  onto, so keep the classes as they are.
+-->
+
+<div class="ar-cf7-grid">
+
+	<div class="ar-cf7-field">
+		<label for="ar-cf7-first">First name <span class="ar-req">*</span></label>
+		[text* first-name id:ar-cf7-first placeholder "John"]
+	</div>
+
+	<div class="ar-cf7-field">
+		<label for="ar-cf7-last">Last name <span class="ar-req">*</span></label>
+		[text* last-name id:ar-cf7-last placeholder "Smith"]
+	</div>
+
+	<div class="ar-cf7-field">
+		<label for="ar-cf7-phone">Phone number <span class="ar-req">*</span></label>
+		[tel* phone id:ar-cf7-phone placeholder "04XX XXX XXX"]
+	</div>
+
+	<div class="ar-cf7-field">
+		<label for="ar-cf7-email">Email address <span class="ar-req">*</span></label>
+		[email* email id:ar-cf7-email placeholder "you@example.com"]
+	</div>
+
+	<div class="ar-cf7-field">
+		<label for="ar-cf7-suburb">Suburb <span class="ar-req">*</span></label>
+		[text* suburb id:ar-cf7-suburb placeholder "e.g. Narre Warren South"]
+	</div>
+
+	<div class="ar-cf7-field">
+		<label for="ar-cf7-service">Service required <span class="ar-req">*</span></label>
+		[select* service id:ar-cf7-service first_as_label "Please select a service" "Rangehood Installation" "Custom Rangehoods" "Ducting Installation &amp; Upgrades" "Maintenance &amp; Repairs"]
+	</div>
+
+	<div class="ar-cf7-field ar-cf7-field--full">
+		<label for="ar-cf7-source">How did you hear about us</label>
+		[select source id:ar-cf7-source first_as_label "Please select" "Google" "Bus ad" "Facebook or Instagram" "Word of mouth" "Other"]
+	</div>
+
+	<div class="ar-cf7-field ar-cf7-field--full">
+		<label for="ar-cf7-message">Tell us about your project</label>
+		[textarea message id:ar-cf7-message placeholder "Cooktop size, kitchen layout, preferred timeline"]
+	</div>
+
+	<div class="ar-cf7-field ar-cf7-field--full">
+		[submit "Send My Enquiry"]
+	</div>
+
+</div>

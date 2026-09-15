@@ -633,3 +633,71 @@ html{scroll-behavior:auto}}
 @media (max-width:560px){
   .ar-scope .ar-form-embed .elementor-form-fields-wrapper{grid-template-columns:1fr}
 }
+
+/* ============================================================
+   Contact Form 7 inside the styled card.
+   Pairs with docs/contact-form-7-template.html, which supplies the
+   grid wrappers and the labels CF7 does not generate itself.
+   ============================================================ */
+.ar-scope .ar-form-embed .wpcf7{margin:0}
+.ar-scope .ar-form-embed .wpcf7-form p{margin:0}
+
+.ar-scope .ar-cf7-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.ar-scope .ar-cf7-field{display:block;min-width:0}
+.ar-scope .ar-cf7-field--full{grid-column:1/-1}
+
+.ar-scope .ar-cf7-field label{
+  display:block;font-family:var(--ar-font-head);font-size:.7rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ar-muted);margin-bottom:6px
+}
+.ar-scope .ar-cf7-field .ar-req{color:var(--ar-primary)}
+.ar-scope .ar-cf7-field .wpcf7-form-control-wrap{display:block}
+
+.ar-scope .ar-form-embed .wpcf7-form-control:not(.wpcf7-submit):not([type="checkbox"]):not([type="radio"]){
+  width:100%;font-family:var(--ar-font-body);font-size:.98rem;color:var(--ar-color-text);
+  padding:14px 16px;border:1.5px solid rgba(12,12,14,.14);border-radius:12px;
+  /* background-color, not the shorthand: the select rule below adds the chevron
+     as a background-image and the shorthand would reset it */
+  background-color:#fff;
+  line-height:1.4;box-shadow:none;appearance:none;
+  transition:border-color .3s,box-shadow .3s
+}
+.ar-scope .ar-form-embed .wpcf7-form-control:not(.wpcf7-submit):focus{
+  outline:0;border-color:var(--ar-primary);box-shadow:0 0 0 4px var(--ar-primary-soft)
+}
+.ar-scope .ar-form-embed select.wpcf7-form-control{
+  cursor:pointer;padding-right:44px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235A5C63' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;background-size:17px
+}
+.ar-scope .ar-form-embed textarea.wpcf7-form-control{min-height:92px;resize:vertical}
+.ar-scope .ar-form-embed input::placeholder,
+.ar-scope .ar-form-embed textarea::placeholder{color:#A2A4AB;opacity:1}
+
+.ar-scope .ar-form-embed .wpcf7-submit{
+  width:100%;display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  font-family:var(--ar-font-head);font-weight:700;font-size:.84rem;letter-spacing:.11em;text-transform:uppercase;
+  padding:19px 34px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--ar-primary);color:#fff;
+  box-shadow:0 14px 30px -14px rgba(254,126,58,.75);
+  transition:transform .45s var(--ar-ease),box-shadow .45s var(--ar-ease),background-color .35s
+}
+.ar-scope .ar-form-embed .wpcf7-submit:hover{transform:translateY(-3px);box-shadow:0 22px 44px -16px rgba(254,126,58,.85)}
+
+/* validation and response messages, styled rather than left to the plugin */
+.ar-scope .ar-form-embed .wpcf7-not-valid-tip{
+  display:block;margin-top:6px;font-size:.82rem;color:#D93025;font-weight:600
+}
+.ar-scope .ar-form-embed .wpcf7-form-control.wpcf7-not-valid{border-color:#D93025}
+.ar-scope .ar-form-embed .wpcf7-response-output{
+  margin:16px 0 0;padding:13px 16px;border-radius:12px;border:0;font-size:.9rem;
+  background:var(--ar-e-global-color-accent);color:#8A4318
+}
+.ar-scope .ar-form-embed .wpcf7-form.sent .wpcf7-response-output{background:#E7F5EC;color:#1B6B36}
+.ar-scope .ar-form-embed .wpcf7-form.invalid .wpcf7-response-output,
+.ar-scope .ar-form-embed .wpcf7-form.failed .wpcf7-response-output{background:#FDECEA;color:#A3201A}
+.ar-scope .ar-form-embed .wpcf7-spinner{margin:12px auto 0;display:block}
+
+@media (max-width:560px){
+  .ar-scope .ar-cf7-grid{grid-template-columns:1fr}
+}

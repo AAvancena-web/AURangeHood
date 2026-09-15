@@ -54,17 +54,41 @@ hello-elementor-child/
 
 ## The enquiry form
 
-The form card is styled markup with a slot in the middle. Put your Elementor
-form shortcode into **AR Design > Enquiry form > Form shortcode**, for example:
+The form card is styled markup with a slot in the middle. Whatever shortcode
+you put into **AR Design > Enquiry form > Form shortcode** renders inside it,
+and that one setting drives the homepage banner, every inner page banner and
+the contact block. Until a shortcode is set, a static version of the design
+shows so the layout is complete, but it does not submit anywhere.
 
-```
-[elementor-template id="1234"]
-```
+Both plugins are styled to match the design.
 
-The real form then renders inside the card on the homepage banner, on every
-inner page banner, and in the contact block, all from that one setting. Until
-a shortcode is set, a static version of the design shows so the layout is
-complete, but it does not submit anywhere.
+### Contact Form 7
+
+1. Install Contact Form 7, then **Contact > Add New**.
+2. Paste the contents of `docs/contact-form-7-template.html` into the Form tab,
+   replacing what is there. The wrapper divs and labels in that file are what
+   the two column grid and the stacked labels hook onto, so keep the classes.
+3. Set the Mail tab from `docs/contact-form-7-mail.txt`.
+4. Copy the shortcode CF7 gives you into the Form shortcode field, for example
+   `[contact-form-7 id="a1b2c3d" title="Rangehood Enquiry"]`.
+
+CF7 normally injects `<p>` and `<br>` tags that would break the grid. The theme
+turns that off, but only for the form whose shortcode is in that field, so any
+other CF7 form on the site is untouched.
+
+Worth knowing before you commit to CF7:
+
+* CF7 does not store submissions. Install **Flamingo** (same author) or every
+  enquiry exists only as an email, and a mail failure loses the lead silently.
+* Spam protection is not built in. Wire up reCAPTCHA or Akismet in CF7 itself.
+* Use a From address on your own domain, never the visitor's, or SPF and DMARC
+  will reject the mail.
+
+### Elementor Forms
+
+Paste the template shortcode instead, for example
+`[elementor-template id="1234"]`. Nothing else to do: the field, label, select
+and submit styling is already mapped.
 
 ## Plugin shortcodes already seeded
 
